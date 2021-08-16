@@ -1,6 +1,6 @@
 # IIS Site Action
 
-This action will start, stop, or restart an on-premises IIS website
+This action can start, stop, or restart an On-Prem IIS website
 
 ## Index <!-- omit in toc -->
 

@@ -69,6 +69,7 @@ jobs:
    env:
       server: 'iis-server.domain.com'
       cert-path: './server-cert'
+      website-name: 'DefaultWebsite'
 
    steps:
     - name: Checkout
@@ -78,6 +79,7 @@ jobs:
       with:
         action: 'stop'
         server: ${{ env.server }}
+        website-name: ${{ env.website_name }}
         service-account-id: ${{ secrets.iis_admin_user }}
         service-account-password: ${{ secrets.iis_admin_password }}
         server-public-key: ${{ env.cert-path }}

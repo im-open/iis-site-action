@@ -1,4 +1,4 @@
-name: 'App Pool Action'
+name: 'IIS Site Action'
 
 description: 'This action can start, stop, or restart an On-Prem IIS website'
 

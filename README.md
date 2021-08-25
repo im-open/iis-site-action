@@ -16,14 +16,14 @@ This action can start, stop, or restart an On-Prem IIS website
 | -------------------------- | ----------- | ----------------------------------------------------- |
 | `action`                   | true        | Specify start, stop, restart as the action to perform |
 | `server`                   | true        | The name of the target server                         |
-| `website_name`             | true        | The name of the website to perform action on          |
+| `website-name`             | true        | The name of the website to perform action on          |
 | `service-account-id`       | true        | The service account name                              |
 | `service-account-password` | true        | The service account password                          |
 | `server-public-key`        | true        | Path to remote server public ssl key                  |
 
 ## Prerequisites
 
-The IIS action uses Web Services for Management, [WSMan], and Windows Remote Management, [WinRM], to create remote administrative sessions. Because of this, Windows OS GitHubs Actions Runners, `runs-on: [windows-2019]`, must be used. If the IIS server target is on a local network that is not publicly available, then specialized self hosted runners, `runs-on: [self-hosted, windows-2019]`,  will need to be used to broker commands to the server.
+The IIS action uses Web Services for Management, [WSMan], and Windows Remote Management, [WinRM], to create remote administrative sessions. Because of this, Windows Actions Runners, `runs-on: [windows-2019]`, must be used. If the IIS server target is on a local network that is not publicly available, then specialized self-hosted runners, `runs-on: [self-hosted, windows-2019]`,  will need to be used to broker commands to the server.
 
 Inbound secure WinRm network traffic (TCP port 5986) must be allowed from the GitHub Actions Runners virtual network so that remote sessions can be received.
 
@@ -64,7 +64,7 @@ Prep the remote IIS server to accept WinRM management calls.  In general the IIS
 ...
 
 jobs:
-  restart-app-pool:
+  restart-iis-site:
    runs-on: [windows-2019]
    env:
       server: 'iis-server.domain.com'
@@ -74,7 +74,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: IIS stop
-      uses: 'im-open/app-pool-action@v1.0.0'
+      uses: 'im-open/iis-site-action@v1.0.0'
       with:
         action: 'stop'
         server: ${{ env.server }}

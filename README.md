@@ -8,20 +8,20 @@ This action can start, stop, or restart an On-Prem IIS website
 - [Prerequisites](#prerequisites)
 - [Example](#example)
 - [Contributing](#contributing)
-	- [Incrementing the Version](#incrementing-the-version)
+  - [Incrementing the Version](#incrementing-the-version)
 - [Code of Conduct](#code-of-conduct)
 - [License](#license)
 
 ## Inputs
 
-| Parameter                  | Is Required | Description                                           |
-| -------------------------- | ----------- | ----------------------------------------------------- |
-| `action`                   | true        | Specify start, stop, restart as the action to perform |
-| `server`                   | true        | The name of the target server                         |
-| `website-name`             | true        | The name of the website to perform action on          |
-| `service-account-id`       | true        | The service account name                              |
-| `service-account-password` | true        | The service account password                          |
-| `server-public-key`        | true        | Path to remote server public ssl key                  |
+| Parameter                  | Is Required | Description                                                                                                      |
+| -------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| `action`                   | true        | Specify start, stop, restart as the action to perform                                                            |
+| `server`                   | true        | The name of the target server                                                                                    |
+| `website-name`             | true        | The name of the website to perform action on                                                                     |
+| `service-account-id`       | true        | The service account name                                                                                         |
+| `service-account-password` | true        | The service account password                                                                                     |
+| `server-cert-path`         | true        | Path to remote server public ssl cert, only necessary if the cert is not already installed on the actions runner |
 
 ## Prerequisites
 
@@ -72,21 +72,19 @@ jobs:
    runs-on: [windows-2019]
    env:
       server: 'iis-server.domain.com'
-      cert-path: './server-cert'
       website-name: 'DefaultWebsite'
 
    steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: IIS stop
-      uses: 'im-open/iis-site-action@v1.0.0'
+      uses: 'im-open/iis-site-action@v2.0.0'
       with:
         action: 'stop'
         server: ${{ env.server }}
         website-name: ${{ env.website_name }}
         service-account-id: ${{ secrets.iis_admin_user }}
         service-account-password: ${{ secrets.iis_admin_password }}
-        server-public-key: ${{ env.cert-path }}
   ...
 ```
 
@@ -116,6 +114,7 @@ This project has adopted the [im-open's Code of Conduct](https://github.com/im-o
 
 Copyright &copy; 2021, Extend Health, LLC. Code released under the [MIT license](LICENSE).
 
+<!-- Links -->
 [git-version-lite]: https://github.com/im-open/git-version-lite
 [PowerShell Remoting over HTTPS with a self-signed SSL certificate]: https://4sysops.com/archives/powershell-remoting-over-https-with-a-self-signed-ssl-certificate
 [WSMan]: https://docs.microsoft.com/en-us/windows/win32/winrm/ws-management-protocol

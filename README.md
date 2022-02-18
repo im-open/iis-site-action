@@ -14,14 +14,13 @@ This action can start, stop, or restart an On-Prem IIS website
 
 ## Inputs
 
-| Parameter                  | Is Required | Description                                                                                                      |
-| -------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
-| `action`                   | true        | Specify start, stop, restart as the action to perform                                                            |
-| `server`                   | true        | The name of the target server                                                                                    |
-| `website-name`             | true        | The name of the website to perform action on                                                                     |
-| `service-account-id`       | true        | The service account name                                                                                         |
-| `service-account-password` | true        | The service account password                                                                                     |
-| `server-cert-path`         | true        | Path to remote server public ssl cert, only necessary if the cert is not already installed on the actions runner |
+| Parameter                  | Is Required | Description                                           |
+| -------------------------- | ----------- | ----------------------------------------------------- |
+| `action`                   | true        | Specify start, stop, restart as the action to perform |
+| `server`                   | true        | The name of the target server                         |
+| `website-name`             | true        | The name of the website to perform action on          |
+| `service-account-id`       | true        | The service account name                              |
+| `service-account-password` | true        | The service account password                          |
 
 ## Prerequisites
 

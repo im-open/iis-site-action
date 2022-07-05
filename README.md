@@ -1,6 +1,6 @@
 # IIS Site Action
 
-This action can start, stop, or restart an On-Prem IIS website
+This action can start, stop, or restart an IIS website hosted on a target windows server.
 
 ## Index <!-- omit in toc -->
 
@@ -28,7 +28,7 @@ The IIS action uses Web Services for Management, [WSMan], and Windows Remote Man
 
 Inbound secure WinRm network traffic (TCP port 5986) must be allowed from the GitHub Actions Runners virtual network so that remote sessions can be received.
 
-Prep the remote IIS server to accept WinRM management calls.  In general the IIS server needs to have a [WSMan] listener that looks for incoming [WinRM] calls. Firewall exceptions need to be added for the secure WinRM TCP ports, and non-secure firewall rules should be disabled. More detailed information on the preparation of an on-prem  server can be found in this article: [PowerShell Remoting over HTTPS with a self-signed SSL certificate]
+Prep the remote IIS server to accept WinRM management calls.  In general the IIS server needs to have a [WSMan] listener that looks for incoming [WinRM] calls. Firewall exceptions need to be added for the secure WinRM TCP ports, and non-secure firewall rules should be disabled. More detailed information on the preparation of a target Windows server can be found in this article: [PowerShell Remoting over HTTPS with a self-signed SSL certificate]
 
 Here is an example script that would be run on the IIS server:
 
@@ -77,7 +77,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: IIS stop
-      uses: 'im-open/iis-site-action@v2.0.2'
+      uses: 'im-open/iis-site-action@v2.0.3'
       with:
         action: 'stop'
         server: ${{ env.server }}

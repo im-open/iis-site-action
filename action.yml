@@ -1,6 +1,6 @@
 name: 'IIS Site Action'
 
-description: 'This action can start, stop, or restart an On-Prem IIS website'
+description: 'This action can start, stop, or restart an IIS website hosted on a target windows server.'
 
 inputs:
   action:

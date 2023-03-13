@@ -77,7 +77,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: IIS stop
-      uses: 'im-open/iis-site-action@v2.0.3'
+      # You may also reference the major or major.minor version
+      uses: im-open/iis-site-action@v2.0.4
       with:
         action: 'stop'
         server: ${{ env.server }}

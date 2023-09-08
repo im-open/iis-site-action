@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This action was deprecated on 2023-09-08 and will no longer receive support or updates.
+
 # IIS Site Action
 
 This action can start, stop, or restart an IIS website hosted on a target windows server.
